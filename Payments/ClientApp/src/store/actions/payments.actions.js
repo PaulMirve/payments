@@ -24,6 +24,7 @@ export const addPayment = (payment) => {
 }
 
 export const updatePayment = (payment) => {
+    console.log(payment);
     return async dispatch => {
         const { data } = await axios.put("api/Payment/", payment, {
             headers: {

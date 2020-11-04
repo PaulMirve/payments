@@ -14,24 +14,24 @@ namespace Payments.Controllers
         [HttpGet]
         public List<payment> GetPayments()
         {
-            //using (var bl = new blpayment())
-            //    return bl.getpayments();
-            return new List<payment> {
-                new payment
-                {
-                    id_payment = 1,
-                    amount = 200,
-                    motive = "Cena en restaurante",
-                    receiver = "Paul Miranda Vega"
-                },new payment
-                {
-                    id_payment = 2,
-                    amount = 500,
-                    motive = "Pago de renta",
-                    receiver = "Rocío Vega Zavala"
-                },
+            using (var bl = new blpayment())
+                return bl.getpayments();
+            //return new List<payment> {
+            //    new payment
+            //    {
+            //        id_payment = 1,
+            //        amount = 200,
+            //        motive = "Cena en restaurante",
+            //        receiver = "Paul Miranda Vega"
+            //    },new payment
+            //    {
+            //        id_payment = 2,
+            //        amount = 500,
+            //        motive = "Pago de renta",
+            //        receiver = "Rocío Vega Zavala"
+            //    },
 
-            };
+            //};
         }
 
 
@@ -43,22 +43,24 @@ namespace Payments.Controllers
             return payment;
         }
 
-        [HttpDelete]
-        public int DeletePost([FromBody]int id)
+        [HttpDelete("{id:int}")]
+        public int DeletePost(int id)
         {
-            using (var bl = new BLPayment())
-            {
-                return bl.DeletePayment(id);
-            }
+            //using (var bl = new BLPayment())
+            //{
+            //    return bl.DeletePayment(id);
+            //}
+            return id;
         }
 
-        [HttpPut("{id:int}")]
+        [HttpPut]
         public payment UpdatePayment([FromBody]payment payment)
         {
-            using (var bl = new BLPayment())
-            {
-                return bl.UpdatePayment(payment);
-            }
+            //using (var bl = new BLPayment())
+            //{
+            //    return bl.UpdatePayment(payment);
+            //}
+            return payment;
         }
 
     }
