@@ -14,23 +14,25 @@ namespace Payments.Controllers
         [HttpGet]
         public List<payment> GetPayments()
         {
-            using (var bl = new blpayment())
-                return bl.getpayments();
+            using (var bl = new BLPayment())
+                return bl.GetPayments();
+
+            //UNCOMMENT THE CODE BELOW AND COMMENT THE LINES ABOVE IF YOU ARE NOT GOING TO USE A DATA BASE CONNECTION
+
             //return new List<payment> {
             //    new payment
             //    {
             //        id_payment = 1,
             //        amount = 200,
             //        motive = "Cena en restaurante",
-            //        receiver = "Paul Miranda Vega"
+            //        receiver = "Ricardo Hernandez Quintero"
             //    },new payment
             //    {
             //        id_payment = 2,
             //        amount = 500,
             //        motive = "Pago de renta",
-            //        receiver = "Rocío Vega Zavala"
+            //        receiver = "Maria López Rodriguez"
             //    },
-
             //};
         }
 
@@ -38,29 +40,38 @@ namespace Payments.Controllers
         [HttpPost]
         public payment AddPayment([FromBody]payment payment)
         {
-            //using (var bl = new BLPayment())
-            //    return bl.AddPayment(payment);
-            return payment;
+            using (var bl = new BLPayment())
+                return bl.AddPayment(payment);
+
+            //UNCOMMENT THE CODE BELOW AND COMMENT THE LINES ABOVE IF YOU ARE NOT GOING TO USE A DATA BASE CONNECTION
+
+            //return payment;
         }
 
         [HttpDelete("{id:int}")]
         public int DeletePost(int id)
         {
-            //using (var bl = new BLPayment())
-            //{
-            //    return bl.DeletePayment(id);
-            //}
-            return id;
+            using (var bl = new BLPayment())
+            {
+                return bl.DeletePayment(id);
+            }
+
+            //UNCOMMENT THE CODE BELOW AND COMMENT THE LINES ABOVE IF YOU ARE NOT GOING TO USE A DATA BASE CONNECTION
+
+            //return id;
         }
 
         [HttpPut]
         public payment UpdatePayment([FromBody]payment payment)
         {
-            //using (var bl = new BLPayment())
-            //{
-            //    return bl.UpdatePayment(payment);
-            //}
-            return payment;
+            using (var bl = new BLPayment())
+            {
+                return bl.UpdatePayment(payment);
+            }
+
+            //UNCOMMENT THE CODE BELOW AND COMMENT THE LINES ABOVE IF YOU ARE NOT GOING TO USE A DATA BASE CONNECTION
+
+            //return payment;
         }
 
     }
