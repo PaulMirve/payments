@@ -14,28 +14,45 @@ namespace Payments.Controllers
         [HttpGet]
         public List<payment> GetPayments()
         {
-            using (var bl = new BLPayment())
-                return bl.GetPayments();
+            //using (var bl = new blpayment())
+            //    return bl.getpayments();
+            return new List<payment> {
+                new payment
+                {
+                    id_payment = 1,
+                    amount = 200,
+                    motive = "Cena en restaurante",
+                    receiver = "Paul Miranda Vega"
+                },new payment
+                {
+                    id_payment = 2,
+                    amount = 500,
+                    motive = "Pago de renta",
+                    receiver = "Rocío Vega Zavala"
+                },
+
+            };
         }
 
 
         [HttpPost]
         public payment AddPayment([FromBody]payment payment)
         {
-            using (var bl = new BLPayment())
-                return bl.AddPayment(payment);
+            //using (var bl = new BLPayment())
+            //    return bl.AddPayment(payment);
+            return payment;
         }
 
         [HttpDelete]
         public int DeletePost([FromBody]int id)
         {
-            using(var bl = new BLPayment())
+            using (var bl = new BLPayment())
             {
                 return bl.DeletePayment(id);
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public payment UpdatePayment([FromBody]payment payment)
         {
             using (var bl = new BLPayment())
